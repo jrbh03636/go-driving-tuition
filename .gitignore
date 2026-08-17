@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.local
+.env.*.local
+
+# Scratch / working files - not part of the deployed site
+assets/screenshots/
+assets/source-footage/
+.claude/settings.local.json

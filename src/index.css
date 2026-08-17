@@ -1,0 +1,135 @@
+@import "@fontsource/anton";
+@import "@fontsource-variable/inter";
+@import "tailwindcss";
+
+@theme {
+  /* Deep-green asphalt scale — dark surfaces carry the GO green */
+  --color-asphalt-950: #05100a;
+  --color-asphalt-900: #0a160d;
+  --color-asphalt-800: #0e2013;
+  --color-asphalt-700: #142b19;
+  --color-asphalt-600: #1d3a22;
+  --color-asphalt-500: #2c4f31;
+
+  /* Bone white — fresh road markings */
+  --color-bone: #ece9e2;
+  --color-bone-white: #f7f5f0;
+  --color-bone-dim: #b9b6ae;
+  --color-bone-faint: #8a8880;
+
+  /* Traffic-light green — GO logo */
+  --color-go-500: #8dc63f;
+  --color-go-400: #a3d55c;
+  --color-go-600: #74a832;
+  --color-go-700: #527c22;
+  --color-go-800: #3f5f1a;
+  --color-go-900: #23350f;
+  --color-go-950: #12210b;
+
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
+
+  --animate-none: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-asphalt-950);
+  /* Side-entering reveal elements must never create sideways scroll */
+  overflow-x: clip;
+}
+
+/* Lenis smooth scrolling (recommended base styles) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-bone);
+  background: var(--color-asphalt-950);
+  /* clip (not hidden): hidden still allows programmatic/focus-driven
+     horizontal scrolling, which let the whole page drift sideways with
+     no way back — clip removes the scroll container entirely. */
+  overflow-x: clip;
+}
+
+/* Industrial display headings */
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+/* Visible focus states site-wide */
+:focus-visible {
+  outline: 2px solid var(--color-go-500);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-go-500);
+  color: var(--color-asphalt-950);
+}
+
+/* Cinematic grain overlay (subtle, static texture; animated only if motion OK) */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -100px;
+  pointer-events: none;
+  z-index: 90;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Gentle vignette on cinematic panels */
+.vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* Dashed road-line divider between sections */
+.road-divider {
+  height: 4px;
+  background-image: linear-gradient(90deg, var(--color-go-500) 0 44px, transparent 44px 88px);
+  background-size: 88px 4px;
+  background-repeat: repeat-x;
+  opacity: 0.45;
+}
+
+/* Horizontal snap row for mobile lesson cards */
+.snap-row {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-row > * {
+  scroll-snap-align: center;
+}
+
+/* Hide scrollbars on snap rows without removing scrollability */
+.snap-row::-webkit-scrollbar {
+  display: none;
+}
+.snap-row {
+  scrollbar-width: none;
+}
