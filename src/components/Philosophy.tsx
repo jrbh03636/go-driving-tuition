@@ -8,9 +8,9 @@ gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 /**
  * "About us" as a scroll story: a winding road draws itself across the
- * panel while a learner car travels along it. The three philosophy
- * lines land as the car passes. Pinned and scrubbed by the wheel;
- * fully static (road drawn, lines visible) under reduced motion.
+ * panel while a learner car travels along it, playing automatically
+ * once the panel scrolls into view — no further scrolling needed to
+ * see it through. Fully static (road drawn) under reduced motion.
  */
 
 const ROAD_D =
@@ -43,31 +43,20 @@ export default function Philosophy() {
       gsap.set(centre, { strokeDasharray: "14 18", strokeDashoffset: centreLen });
       gsap.set(flag, { scale: 0, transformOrigin: "bottom center" });
 
-      const tl = gsap.timeline({
-        defaults: { ease: "none" },
-        scrollTrigger: {
-          trigger: ".journey-panel",
-          start: "top top",
-          end: "+=150%",
-          scrub: 0.35,
-          pin: true,
-          anticipatePin: 1,
-        },
-      });
-
-      // The panel is blank until the road starts drawing — a quick cue
-      // tells the user to keep scrolling, then gets out of the way.
-      tl.to(".journey-cue", { autoAlpha: 0, duration: 0.06 }, 0);
+      // Built paused, then played automatically once the panel scrolls
+      // into view — the user doesn't need to keep scrolling to see it.
+      const tl = gsap.timeline({ paused: true });
 
       // Road surface draws in just ahead of the car…
-      tl.to(road, { strokeDashoffset: 0, duration: 0.9 }, 0);
+      tl.to(road, { strokeDashoffset: 0, duration: 1.3, ease: "none" }, 0);
       // …dashes flow along the centre line…
-      tl.to(centre, { strokeDashoffset: 0, duration: 0.9 }, 0.02);
+      tl.to(centre, { strokeDashoffset: 0, duration: 1.3, ease: "none" }, 0.05);
       // …and the learner car follows the same path.
       tl.to(
         car,
         {
-          duration: 0.86,
+          duration: 1.3,
+          ease: "power1.inOut",
           motionPath: {
             path: ROAD_D,
             align: ".journey-road",
@@ -75,10 +64,17 @@ export default function Philosophy() {
             autoRotate: true,
           },
         },
-        0.04
+        0.1
       );
 
-      tl.to(flag, { scale: 1, duration: 0.06, ease: "back.out(2.5)" }, 0.9);
+      tl.to(flag, { scale: 1, duration: 0.4, ease: "back.out(2.5)" }, 1.3);
+
+      ScrollTrigger.create({
+        trigger: ".journey-panel",
+        start: "top 75%",
+        once: true,
+        onEnter: () => tl.play(),
+      });
     }, section);
 
     return () => ctx.revert();
@@ -180,21 +176,6 @@ export default function Philosophy() {
         <p className="absolute top-[8%] left-[6%] text-sm tracking-[0.35em] text-go-700 uppercase md:left-[8%]">
           Our philosophy
         </p>
-
-        {/* Invites the road/car animation without blocking the always-visible
-            statement lines — kept to the bottom-left, clear of the
-            bottom-right "Just drivers…" line. */}
-        {!reduced && (
-          <div
-            aria-hidden="true"
-            className="journey-cue absolute bottom-6 left-[6%] z-10 flex items-center gap-2 text-asphalt-950 md:left-[8%]"
-          >
-            <span className="text-xs tracking-[0.35em] uppercase">Keep scrolling</span>
-            <svg width="16" height="22" viewBox="0 0 16 22" fill="none" className="animate-bounce">
-              <path d="M8 2v16m0 0 6-6m-6 6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </div>
-        )}
 
         {/* Statement lines — visible immediately, so the panel reads as
             real content from the first frame. Scrolling still plays the

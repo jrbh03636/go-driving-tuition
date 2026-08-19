@@ -116,20 +116,3 @@ body {
   background-repeat: repeat-x;
   opacity: 0.45;
 }
-
-/* Horizontal snap row for mobile lesson cards */
-.snap-row {
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-.snap-row > * {
-  scroll-snap-align: center;
-}
-
-/* Hide scrollbars on snap rows without removing scrollability */
-.snap-row::-webkit-scrollbar {
-  display: none;
-}
-.snap-row {
-  scrollbar-width: none;
-}

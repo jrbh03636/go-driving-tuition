@@ -39,22 +39,22 @@ export default function Lessons() {
       <div className="mx-auto max-w-7xl px-6" data-reveal>
         <p className="text-sm tracking-[0.35em] uppercase text-go-500">Our lessons</p>
         <h2 className="display mt-4 max-w-3xl text-3xl text-bone md:text-6xl">
-          Two ways to learn. One standard.
+          Beginner or refresher. Lessons tailored to you.
         </h2>
       </div>
 
-      {/* Desktop: side by side. Mobile: horizontal swipe with snap. */}
+      {/* Stacked full-width on mobile, side by side from md up. */}
       <div className="mt-8 md:mx-auto md:mt-14 md:max-w-7xl md:px-6">
         <div
-          className="snap-row flex gap-5 overflow-x-auto px-6 pb-4 md:grid md:grid-cols-2 md:overflow-visible md:px-0"
+          className="grid gap-5 px-6 md:grid-cols-2 md:px-0"
           data-reveal-stagger
         >
           {LESSONS.map((lesson) => (
             <article
               key={lesson.kicker}
-              className="group relative flex w-[86vw] max-w-md flex-none flex-col border-t-4 border-go-500 bg-bone-white p-6 transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_44px_-18px_rgba(141,198,63,0.55)] md:w-auto md:max-w-none md:p-12"
+              className="group relative flex flex-col border-t-4 border-go-500 bg-bone-white p-6 transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_44px_-18px_rgba(141,198,63,0.55)] md:p-12"
             >
-              <p className="text-xs font-semibold tracking-[0.35em] uppercase text-go-800">{lesson.kicker}</p>
+              <p className="text-sm font-bold tracking-[0.35em] uppercase text-go-800">{lesson.kicker}</p>
               <h3 className="display mt-4 text-2xl text-asphalt-950 md:text-4xl">{lesson.heading}</h3>
               <div className="mt-4 space-y-3 text-sm leading-relaxed text-asphalt-500 md:mt-6 md:space-y-4 md:text-base">
                 {lesson.paragraphs.map((p) => (

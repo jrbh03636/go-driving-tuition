@@ -35,7 +35,6 @@ const AREAS: Area[] = [
   { name: "Bramhall", x: 430, y: 370 }, // SK7
   { name: "Woodford", x: 480, y: 470 }, // SK7
   { name: "Poynton", x: 630, y: 460 }, // SK12
-  { name: "Disley", x: 650, y: 520 }, // SK12
 ];
 
 const ZONE_DASH = "10 8";
