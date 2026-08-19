@@ -3,8 +3,8 @@ import TermsAndConditions from "./TermsAndConditions";
 
 export default function Footer() {
   return (
-    <footer id="contact" aria-label="Contact information" className="border-t border-asphalt-700 bg-asphalt-950 px-6 py-16">
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-3">
+    <footer id="contact" aria-label="Contact information" className="border-t border-asphalt-700 bg-asphalt-950 px-6 py-10 md:py-16">
+      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3 md:gap-12">
         <div>
           <img src="/images/go-logo.png" alt="GO Driving Tuition logo" className="w-32" />
           <p className="mt-4 text-sm text-bone-dim">
@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="road-divider mx-auto mt-14 max-w-6xl" aria-hidden="true" />
+      <div className="road-divider mx-auto mt-8 max-w-6xl md:mt-14" aria-hidden="true" />
       <p className="mx-auto mt-6 max-w-6xl text-xs text-bone-faint">
         © {new Date().getFullYear()} GO Driving Tuition. Serving Stockport &amp; Manchester.
       </p>

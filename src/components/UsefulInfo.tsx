@@ -181,16 +181,16 @@ export default function UsefulInfo() {
   }, [open]);
 
   return (
-    <section id="info" aria-label="Useful information" className="bg-bone-white px-6 py-24 md:py-36">
+    <section id="info" aria-label="Useful information" className="bg-bone-white px-6 py-12 md:py-36">
       <div className="mx-auto max-w-3xl">
         <div data-reveal>
           <p className="text-sm font-semibold tracking-[0.35em] uppercase text-go-800">Useful information</p>
-          <h2 className="display mt-4 text-4xl text-asphalt-950 md:text-6xl">
+          <h2 className="display mt-4 text-3xl text-asphalt-950 md:text-6xl">
             Vital driving information, right here.
           </h2>
         </div>
 
-        <div className="mt-12 divide-y divide-asphalt-950/15 border-y border-asphalt-950/15">
+        <div className="mt-8 divide-y divide-asphalt-950/15 border-y border-asphalt-950/15 md:mt-12">
           {PANELS.map((panel, i) => {
             const expanded = open === i;
             return (
@@ -233,7 +233,7 @@ export default function UsefulInfo() {
           })}
         </div>
 
-        <p className="mt-8 text-xs leading-relaxed text-asphalt-500">
+        <p className="mt-6 text-xs leading-relaxed text-asphalt-500 md:mt-8">
           Government rules, fees and test procedures can change. Always confirm the latest
           requirements through the official DVLA and DVSA pages linked above.
         </p>

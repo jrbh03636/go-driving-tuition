@@ -39,16 +39,16 @@ export default function PostcodeChecker({ onPostcodeConfirmed }: PostcodeChecker
     <section
       id="postcode"
       aria-label="Postcode coverage checker"
-      className="bg-go-950 px-6 py-24 md:py-32"
+      className="bg-go-950 px-6 py-12 md:py-32"
     >
       <div className="mx-auto max-w-3xl" data-reveal="scale">
         <p className="text-sm tracking-[0.35em] uppercase text-go-500">Coverage check</p>
-        <h2 className="display mt-4 text-4xl text-bone md:text-6xl">Do we cover your area?</h2>
+        <h2 className="display mt-4 text-3xl text-bone md:text-6xl">Do we cover your area?</h2>
         <p className="mt-6 text-bone-dim">
           Enter your postcode to check whether GO Driving Tuition usually operates near you.
         </p>
 
-        <form onSubmit={onSubmit} className="mt-10" noValidate>
+        <form onSubmit={onSubmit} className="mt-6 md:mt-10" noValidate>
           <label htmlFor={inputId} className="block text-sm font-medium text-bone">
             Your postcode
           </label>
@@ -130,7 +130,7 @@ export default function PostcodeChecker({ onPostcodeConfirmed }: PostcodeChecker
           </div>
         </form>
 
-        <p className="mt-8 text-xs leading-relaxed text-bone-faint">
+        <p className="mt-6 text-xs leading-relaxed text-bone-faint md:mt-8">
           Coverage depends on instructor availability. A postcode within our usual service area
           does not guarantee a specific lesson time.
         </p>

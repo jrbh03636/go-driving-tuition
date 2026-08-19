@@ -40,12 +40,12 @@ export default function Results() {
   }, [reduced]);
 
   return (
-    <section aria-label="Results" className="bg-go-500 px-6 py-16">
-      <div ref={ref} className="mx-auto grid max-w-6xl gap-10 text-center sm:grid-cols-3">
+    <section aria-label="Results" className="bg-go-500 px-6 py-8 md:py-16">
+      <div ref={ref} className="mx-auto grid max-w-6xl gap-6 text-center sm:grid-cols-3 md:gap-10">
         {RESULTS.map((r) => (
           <div key={r.label}>
             <p
-              className="display text-5xl text-asphalt-950 md:text-6xl"
+              className="display text-4xl text-asphalt-950 md:text-6xl"
               data-count={r.value}
               data-suffix={r.suffix}
             >

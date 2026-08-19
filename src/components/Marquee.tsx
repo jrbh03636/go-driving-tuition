@@ -45,12 +45,12 @@ export default function Marquee() {
   );
 
   return (
-    <div aria-hidden="true" className="overflow-hidden border-y border-asphalt-700 bg-asphalt-950 py-6">
+    <div aria-hidden="true" className="overflow-hidden border-y border-asphalt-700 bg-asphalt-950 py-4 md:py-6">
       <div ref={stripRef} className="flex w-max whitespace-nowrap will-change-transform">
         {Array.from({ length: 8 }).map((_, i) => (
           <span
             key={i}
-            className="display px-2 text-5xl text-transparent md:text-7xl"
+            className="display px-2 text-4xl text-transparent md:text-7xl"
             style={{ WebkitTextStroke: "1.5px #ece9e2" }}
           >
             {phrase}

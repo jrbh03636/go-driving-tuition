@@ -96,7 +96,7 @@ function FleetCard({ src, name, note, alt, feature }: (typeof FLEET)[number]) {
         onClick={() => setPinned((p) => !p)}
         aria-pressed={pinned}
         aria-label={`${name}. Tap to ${pinned ? "show the photo" : `reveal a standout feature: ${feature.label}`}.`}
-        className="relative block aspect-[16/10] w-full cursor-pointer [perspective:1400px] focus:outline-none"
+        className="relative block aspect-[16/9] w-full cursor-pointer [perspective:1400px] focus:outline-none md:aspect-[16/10]"
       >
         <div
           className={`absolute inset-0 [transform-style:preserve-3d] transition-transform duration-700 ease-out motion-reduce:transition-none ${
@@ -155,22 +155,22 @@ function FleetCard({ src, name, note, alt, feature }: (typeof FLEET)[number]) {
 
 export default function Cars() {
   return (
-    <section id="cars" aria-label="Our cars" className="relative bg-asphalt-900 px-6 py-24 md:py-36">
+    <section id="cars" aria-label="Our cars" className="relative bg-asphalt-900 px-6 py-12 md:py-36">
       <div className="mx-auto max-w-6xl">
         <div data-reveal>
           <p className="text-sm tracking-[0.35em] uppercase text-go-500">Our cars</p>
-          <h2 className="display mt-4 max-w-3xl text-4xl text-bone md:text-6xl">
+          <h2 className="display mt-4 max-w-3xl text-3xl text-bone md:text-6xl">
             Enjoy your driving with a smart GO car.
           </h2>
         </div>
 
-        <p className="mt-8 max-w-3xl leading-relaxed text-bone-dim" data-reveal>
+        <p className="mt-6 max-w-3xl leading-relaxed text-bone-dim md:mt-8" data-reveal>
           We want you to enjoy a positive and comfortable driving experience at GO. Our cars are
           smart, modern and well equipped, responsive, compact and easy to drive.
         </p>
 
         {/* The fleet */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 md:mt-12 lg:grid-cols-3" data-reveal-stagger>
           {FLEET.map((car) => (
             <FleetCard key={car.name} {...car} />
           ))}

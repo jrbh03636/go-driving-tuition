@@ -101,7 +101,7 @@ export default function Hero() {
     <header
       ref={heroRef}
       id="top-hero"
-      className="relative flex min-h-svh items-center justify-center overflow-hidden bg-asphalt-950"
+      className="relative flex min-h-[65vh] items-center justify-center overflow-hidden bg-asphalt-950 md:min-h-svh"
     >
       {/* Backdrop: GO learner car tracked on the road. Reduced motion
           gets the poster still instead of the autoplaying video. */}
@@ -151,16 +151,16 @@ export default function Hero() {
 
       <div
         ref={contentRef}
-        className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-6 pt-24 pb-20 text-center will-change-transform"
+        className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-6 pt-12 pb-10 text-center will-change-transform md:pt-24 md:pb-20"
       >
-        <h1 className="display text-6xl text-bone md:text-8xl">
+        <h1 className="display text-5xl text-bone md:text-8xl">
           Pass at <span className="text-go-500">GO</span><span className="text-go-500">!</span>
         </h1>
         <p className="mt-6 max-w-xl text-sm font-semibold tracking-[0.15em] text-bone uppercase md:text-base">
           Learn to drive quickly, safely, economically, and pass your test first time!
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:mt-10">
           <a
             href="#book"
             data-spring
@@ -177,7 +177,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <dl className="mt-12 space-y-2">
+        <dl className="mt-8 space-y-2 md:mt-12">
           <div className="flex flex-wrap items-baseline justify-center gap-x-3">
             <dt className="display text-xl text-bone">T</dt>
             <dd>

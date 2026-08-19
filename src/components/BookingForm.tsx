@@ -196,11 +196,11 @@ export default function BookingForm({ postcode, onPostcodeChange }: BookingFormP
   const legendCls = "text-sm font-medium text-bone";
 
   return (
-    <section id="book" aria-label="Book a lesson" className="bg-asphalt-900 px-6 py-24 md:py-36">
+    <section id="book" aria-label="Book a lesson" className="bg-asphalt-900 px-6 py-12 md:py-36">
       <div className="mx-auto max-w-3xl">
         <div data-reveal>
           <p className="text-sm tracking-[0.35em] uppercase text-go-500">Get started</p>
-        <h2 className="display mt-4 text-4xl text-bone md:text-6xl">Book a lesson</h2>
+        <h2 className="display mt-4 text-3xl text-bone md:text-6xl">Book a lesson</h2>
         <p className="mt-6 leading-relaxed text-bone-dim">
           Complete the form to contact us about learning to drive and booking lessons with GO
           Driving Tuition. If you prefer to speak to our friendly team,{" "}
@@ -211,7 +211,7 @@ export default function BookingForm({ postcode, onPostcodeChange }: BookingFormP
         </p>
         </div>
 
-        <form onSubmit={onSubmit} noValidate className="mt-12 space-y-8">
+        <form onSubmit={onSubmit} noValidate className="mt-8 space-y-6 md:mt-12 md:space-y-8">
           {/* Honeypot — hidden from real visitors, catches simple bots. */}
           <div className="sr-only" aria-hidden="true">
             <label htmlFor={`${uid}-website`}>Leave this field blank</label>

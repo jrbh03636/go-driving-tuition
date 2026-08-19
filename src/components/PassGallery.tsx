@@ -41,11 +41,11 @@ const TONE_BG: Record<NonNullable<PassStripProps["tone"]>, string> = {
 
 export default function PassStrip({ photos, tone = "dark", caption }: PassStripProps) {
   return (
-    <aside aria-label="Recent passes" className={`${TONE_BG[tone]} px-6 py-14`}>
+    <aside aria-label="Recent passes" className={`${TONE_BG[tone]} px-6 py-8 md:py-14`}>
       <div className="mx-auto max-w-5xl">
         {caption && (
           <p
-            className={`mb-8 text-center text-sm tracking-[0.35em] uppercase ${
+            className={`mb-5 text-center text-sm tracking-[0.35em] uppercase md:mb-8 ${
               tone === "light" ? "text-go-700" : "text-go-500"
             }`}
             data-reveal
@@ -54,7 +54,7 @@ export default function PassStrip({ photos, tone = "dark", caption }: PassStripP
             {caption}
           </p>
         )}
-        <div className="flex flex-wrap items-center justify-center gap-6" data-reveal-stagger data-once>
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6" data-reveal-stagger data-once>
           {photos.map((n, i) => (
             <figure
               key={n}
@@ -64,7 +64,7 @@ export default function PassStrip({ photos, tone = "dark", caption }: PassStripP
                 src={`/images/passes/pass-${n}.jpg`}
                 alt={ALTS[n]}
                 loading="lazy"
-                className="h-56 w-full object-cover object-top sm:h-72"
+                className="h-40 w-full object-cover object-top sm:h-56 md:h-72"
               />
               <figcaption className="py-2 text-center text-[11px] font-semibold tracking-wide text-asphalt-800">
                 PASSED with GO

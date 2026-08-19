@@ -48,12 +48,16 @@ export default function Philosophy() {
         scrollTrigger: {
           trigger: ".journey-panel",
           start: "top top",
-          end: "+=220%",
-          scrub: 0.5,
+          end: "+=150%",
+          scrub: 0.35,
           pin: true,
           anticipatePin: 1,
         },
       });
+
+      // The panel is blank until the road starts drawing — a quick cue
+      // tells the user to keep scrolling, then gets out of the way.
+      tl.to(".journey-cue", { autoAlpha: 0, duration: 0.06 }, 0);
 
       // Road surface draws in just ahead of the car…
       tl.to(road, { strokeDashoffset: 0, duration: 0.9 }, 0);
@@ -74,15 +78,6 @@ export default function Philosophy() {
         0.04
       );
 
-      LINES.forEach((_, i) => {
-        tl.fromTo(
-          `.journey-line-${i}`,
-          { autoAlpha: 0, y: 44 },
-          { autoAlpha: 1, y: 0, duration: 0.09, ease: "power2.out" },
-          0.12 + i * 0.3
-        );
-      });
-
       tl.to(flag, { scale: 1, duration: 0.06, ease: "back.out(2.5)" }, 0.9);
     }, section);
 
@@ -97,15 +92,15 @@ export default function Philosophy() {
       className="relative bg-bone-white"
     >
       {/* About copy + bonnet photo */}
-      <div className="mx-auto grid min-w-0 max-w-7xl items-center gap-12 px-6 pt-24 pb-10 md:pt-32 lg:grid-cols-2">
+      <div className="mx-auto grid min-w-0 max-w-7xl items-center gap-6 px-6 pt-12 pb-10 md:gap-12 md:pt-32 lg:grid-cols-2">
         <div className="min-w-0">
           <p className="text-sm tracking-[0.35em] uppercase text-go-700" data-reveal>
             About us
           </p>
-          <h2 className="display mt-4 text-4xl text-asphalt-950 md:text-6xl" data-reveal>
+          <h2 className="display mt-4 text-3xl text-asphalt-950 md:text-6xl" data-reveal>
             Twenty years of first-time passes.
           </h2>
-          <p className="mt-8 text-lg leading-relaxed text-asphalt-500 md:text-xl" data-reveal>
+          <p className="mt-6 text-lg leading-relaxed text-asphalt-500 md:mt-8 md:text-xl" data-reveal>
             Go Driving Tuition has been teaching learners across Stockport and south Manchester for
             over 20 years. Our A-grade DVSA-approved instructors offer calm, patient one-to-one
             tuition for everyone from complete beginners to those wanting motorway lessons or
@@ -179,14 +174,37 @@ export default function Philosophy() {
           </g>
         </svg>
 
-        {/* Statement lines */}
+        {/* Always-visible kicker, so the panel reads as content from the
+            very first frame instead of an empty page while the road/car
+            and statement lines are still waiting on scroll to reveal. */}
+        <p className="absolute top-[8%] left-[6%] text-sm tracking-[0.35em] text-go-700 uppercase md:left-[8%]">
+          Our philosophy
+        </p>
+
+        {/* Invites the road/car animation without blocking the always-visible
+            statement lines — kept to the bottom-left, clear of the
+            bottom-right "Just drivers…" line. */}
+        {!reduced && (
+          <div
+            aria-hidden="true"
+            className="journey-cue absolute bottom-6 left-[6%] z-10 flex items-center gap-2 text-asphalt-950 md:left-[8%]"
+          >
+            <span className="text-xs tracking-[0.35em] uppercase">Keep scrolling</span>
+            <svg width="16" height="22" viewBox="0 0 16 22" fill="none" className="animate-bounce">
+              <path d="M8 2v16m0 0 6-6m-6 6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </div>
+        )}
+
+        {/* Statement lines — visible immediately, so the panel reads as
+            real content from the first frame. Scrolling still plays the
+            road-draw and car-travel animation underneath them. */}
         {LINES.map((line, i) => (
           <p
             key={line.text}
             className={`journey-line-${i} absolute max-w-[80vw] md:max-w-3xl ${line.cls} display text-4xl leading-tight md:text-7xl ${
               i === 1 || i === LINES.length - 1 ? "text-go-700" : "text-asphalt-950"
             }`}
-            style={reduced ? undefined : { opacity: 0 }}
           >
             {line.text}
           </p>

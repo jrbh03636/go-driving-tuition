@@ -93,18 +93,18 @@ export default function Coverage() {
   }, [reduced]);
 
   return (
-    <section id="coverage" aria-label="Location and coverage" className="bg-asphalt-900 px-6 py-24 md:py-36">
-      <div className="mx-auto grid min-w-0 max-w-6xl items-center gap-12 lg:grid-cols-2">
+    <section id="coverage" aria-label="Location and coverage" className="bg-asphalt-900 px-6 py-12 md:py-36">
+      <div className="mx-auto grid min-w-0 max-w-6xl items-center gap-8 md:gap-12 lg:grid-cols-2">
         <div data-reveal="left" className="min-w-0">
           <p className="text-sm tracking-[0.35em] uppercase text-go-500">Where we teach</p>
-          <h2 className="display mt-4 text-4xl text-bone md:text-6xl">
+          <h2 className="display mt-4 text-3xl text-bone md:text-6xl">
             South Manchester &amp; Stockport.
           </h2>
-          <p className="mt-8 leading-relaxed text-bone-dim">
+          <p className="mt-6 leading-relaxed text-bone-dim md:mt-8">
             GO Driving Tuition teaches across the SK1, SK2, SK3, SK4, SK5, SK7, SK8 and SK12
             postcode areas.
           </p>
-          <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-bone-dim" role="list">
+          <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-bone-dim md:mt-8" role="list">
             {AREAS.map((a) => (
               <li key={a.name} className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 flex-none bg-go-500" aria-hidden="true" />
@@ -112,7 +112,7 @@ export default function Coverage() {
               </li>
             ))}
           </ul>
-          <p className="mt-8 text-xs leading-relaxed text-bone-faint">
+          <p className="mt-6 text-xs leading-relaxed text-bone-faint md:mt-8">
             The map shows an approximate service area only. Coverage depends on instructor
             availability.
           </p>
