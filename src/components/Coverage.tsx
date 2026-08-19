@@ -20,14 +20,22 @@ interface Area {
   major?: boolean;
 }
 
+// One or two representative places per covered postcode district
+// (SK1, SK2, SK3, SK4, SK5, SK7, SK8, SK12).
 const AREAS: Area[] = [
-  { name: "Stockport", x: 480, y: 155, major: true },
-  { name: "Hazel Grove", x: 620, y: 230 },
-  { name: "Cheadle", x: 300, y: 255 },
-  { name: "Bramhall", x: 430, y: 335 },
-  { name: "Woodford", x: 462, y: 442 },
-  { name: "Poynton", x: 600, y: 470 },
-  { name: "Wilmslow", x: 300, y: 485 },
+  { name: "Stockport", x: 420, y: 190, major: true }, // SK1
+  { name: "Reddish", x: 500, y: 90 }, // SK5
+  { name: "Heaton Moor", x: 230, y: 110 }, // SK4
+  { name: "Offerton", x: 600, y: 210 }, // SK2
+  { name: "Gatley", x: 160, y: 270 }, // SK8
+  { name: "Cheadle", x: 280, y: 290 }, // SK8
+  { name: "Edgeley", x: 400, y: 300 }, // SK3
+  { name: "Hazel Grove", x: 650, y: 300 }, // SK7
+  { name: "Cheadle Hulme", x: 260, y: 390 }, // SK8
+  { name: "Bramhall", x: 430, y: 370 }, // SK7
+  { name: "Woodford", x: 480, y: 470 }, // SK7
+  { name: "Poynton", x: 630, y: 460 }, // SK12
+  { name: "Disley", x: 650, y: 520 }, // SK12
 ];
 
 const ZONE_DASH = "10 8";
@@ -90,17 +98,17 @@ export default function Coverage() {
         <div data-reveal="left" className="min-w-0">
           <p className="text-sm tracking-[0.35em] uppercase text-go-500">Where we teach</p>
           <h2 className="display mt-4 text-4xl text-bone md:text-6xl">
-            Stockport &amp; South Manchester.
+            South Manchester &amp; Stockport.
           </h2>
           <p className="mt-8 leading-relaxed text-bone-dim">
-            GO Driving Tuition teaches across Stockport and south Manchester, covering Poynton,
-            Bramhall, Cheadle, Stockport, Woodford, Wilmslow and Hazel Grove.
+            GO Driving Tuition teaches across the SK1, SK2, SK3, SK4, SK5, SK7, SK8 and SK12
+            postcode areas.
           </p>
           <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-bone-dim" role="list">
-            {["Stockport", "Hazel Grove", "Cheadle", "Bramhall", "Woodford", "Wilmslow", "Poynton"].map((a) => (
-              <li key={a} className="flex items-center gap-2">
+            {AREAS.map((a) => (
+              <li key={a.name} className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 flex-none bg-go-500" aria-hidden="true" />
-                {a}
+                {a.name}
               </li>
             ))}
           </ul>
@@ -115,7 +123,7 @@ export default function Coverage() {
             viewBox="0 0 800 600"
             className="w-full max-w-full border border-asphalt-600 bg-asphalt-950"
             role="img"
-            aria-label="Stylised map of the approximate GO Driving Tuition service area, centred on Stockport and extending into Manchester"
+            aria-label="Stylised map of the approximate GO Driving Tuition service area across the SK1, SK2, SK3, SK4, SK5, SK7, SK8 and SK12 postcode districts"
           >
             {/* Faint road-like lines for texture */}
             <g stroke="#1d3a22" strokeWidth="3" fill="none">
@@ -128,8 +136,8 @@ export default function Coverage() {
             {/* Approximate coverage zone */}
             <path
               className="map-zone"
-              d="M 160 100 C 300 40, 480 60, 580 130 C 680 200, 700 340, 670 450
-                 C 640 545, 480 570, 340 555 C 220 540, 150 450, 160 330 C 165 240, 130 160, 160 100 Z"
+              d="M 150 90 C 300 30, 500 40, 610 110 C 700 170, 720 350, 700 480
+                 C 670 570, 500 590, 340 570 C 210 555, 140 460, 150 330 C 155 230, 120 150, 150 90 Z"
               fill="#8dc63f"
               fillOpacity="0.14"
               stroke="#8dc63f"
@@ -147,7 +155,7 @@ export default function Coverage() {
               fontStyle="italic"
               fontFamily="Inter, sans-serif"
             >
-              South Manchester
+              Cheshire &amp; Greater Manchester
             </text>
 
             {AREAS.map((a) => (

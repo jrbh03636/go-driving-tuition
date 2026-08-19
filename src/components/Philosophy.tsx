@@ -108,9 +108,8 @@ export default function Philosophy() {
           <p className="mt-8 text-lg leading-relaxed text-asphalt-500 md:text-xl" data-reveal>
             Go Driving Tuition has been teaching learners across Stockport and south Manchester for
             over 20 years. Our A-grade DVSA-approved instructors offer calm, patient one-to-one
-            tuition for everyone from complete beginners to those wanting intensive courses,
-            motorway lessons or refresher sessions, all in smart, dual-controlled, well-maintained
-            cars. Two decades of excellent first-time pass rates, and most of our new pupils still
+            tuition for everyone from complete beginners to those wanting motorway lessons or
+            refresher sessions, all in smart, dual-controlled, well-maintained cars. Two decades of excellent first-time pass rates, and most of our new pupils still
             come by personal recommendation.
           </p>
         </div>

@@ -10,11 +10,7 @@
 
 /** Usual service area, by outward postcode district. */
 const COVERED_DISTRICTS = new Set([
-  // Stockport
-  "SK1", "SK2", "SK3", "SK4", "SK5", "SK6", "SK7", "SK8",
-  // Manchester
-  "M1", "M2", "M3", "M4", "M11", "M12", "M13", "M14", "M15",
-  "M16", "M18", "M19", "M20", "M21", "M22", "M23",
+  "SK1", "SK2", "SK3", "SK4", "SK5", "SK7", "SK8", "SK12",
 ]);
 
 /**

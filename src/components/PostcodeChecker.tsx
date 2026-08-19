@@ -80,7 +80,7 @@ export default function PostcodeChecker({ onPostcodeConfirmed }: PostcodeChecker
             {state.status === "invalid" && (
               <p className="border-l-2 border-red-400 bg-asphalt-800 p-4 text-sm text-red-300">
                 That doesn’t look like a UK postcode. Please check it and try again, for example
-                SK1 3XE or M20 2RN.
+                SK1 3XE or SK7 1AB.
               </p>
             )}
 

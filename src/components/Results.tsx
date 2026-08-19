@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 /** Results strip — real school figures, counting up as they scroll in. */
 
 const RESULTS = [
-  { value: 95, suffix: "%", label: "Pass rate" },
+  { value: 13, suffix: "", label: "Areas covered" },
   { value: 1500, suffix: "+", label: "Learners passed" },
   { value: 20, suffix: "", label: "Years on the road" },
 ];
